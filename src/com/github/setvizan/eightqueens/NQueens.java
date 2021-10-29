@@ -1,5 +1,8 @@
 package com.github.setvizan.eightqueens;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  Author: Nino Arisona and Oliver Janka
 
@@ -20,10 +23,12 @@ public class NQueens {
     private final int N;
     private int[] queens;
     private int counter = 0;
+    private final List<Solution> solutions;
 
     NQueens(int N){
         this.queens = new int[N];
         this.N = N;
+        this.solutions = new ArrayList<>();
     }
 
     private int northeast(final int rank, final int file){
@@ -58,8 +63,8 @@ public class NQueens {
 
     private void loop(final int rank){
         if(rank == N){
-            System.out.println("Solution No."+ ++this.counter);
-            printSolution();
+            addSolution();
+//            printSolution();
         } else {
             for(int file = 0; file < N; file++){
                 if(isSafe(rank, file)){
@@ -71,6 +76,17 @@ public class NQueens {
         }
     }
 
+    private void addSolution() {
+    	boolean[][] queens = new boolean[N][N];
+    	for (int i = 0; i < queens.length; i++) {
+    		for (int k = 0; k < queens[i].length; k++) {
+    			queens[i][k] = this.queens[i] == k ? true : false;
+    		}
+    	}
+    	
+    	solutions.add(new Solution(queens));
+    }
+    
     private void printSolution(){
         for(int r = 0; r < N; r++){
             for(int f = 0; f < N; f++){
@@ -80,10 +96,20 @@ public class NQueens {
         }
     }
 
+    public List<Solution> getSolutions() {
+    	return this.solutions;
+    }
+    
     public static void solve(int N){
+    	var instance = new NQueens(N);
         long t1 = System.nanoTime();
-        new NQueens(N).loop(0);
+        instance.loop(0);
         long t2 = System.nanoTime();
+        
+        for (Solution solution : instance.getSolutions()) {
+        	System.out.println(solution.toString());
+        }
+        
         System.out.println("Time needed: "+(t2-t1));
     }
 }

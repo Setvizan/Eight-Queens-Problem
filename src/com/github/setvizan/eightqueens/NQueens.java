@@ -100,16 +100,16 @@ public class NQueens {
     	return this.solutions;
     }
     
-    public static void solve(int N){
+    public static Solution[] solve(int N){
     	var instance = new NQueens(N);
-        long t1 = System.nanoTime();
+//        long t1 = System.nanoTime();
         instance.loop(0);
-        long t2 = System.nanoTime();
+//        long t2 = System.nanoTime();
         
-        for (Solution solution : instance.getSolutions()) {
-        	System.out.println(solution.toString());
-        }
+        List<Solution> solutions = instance.getSolutions();
         
-        System.out.println("Time needed: "+(t2-t1));
+        return solutions.toArray(new Solution[solutions.size()]);
+        
+//        System.out.println("Time needed: "+(t2-t1));
     }
 }

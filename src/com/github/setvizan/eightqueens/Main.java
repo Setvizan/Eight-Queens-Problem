@@ -57,7 +57,9 @@ public class Main {
     	explorer.setLayout(new GridLayout(1, 2));
     	explorer.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
     	explorer.setMinimumSize(new Dimension(500, 500));
-    
+    	
+    	SolutionRenderer solutionRenderer = new SolutionRenderer();
+    	
     	JTable table = new JTable(new DefaultTableModel(new Object[] {"Solution"}, 0) {
     		/**
 			 * 
@@ -86,6 +88,8 @@ public class Main {
 					int[] selectedIndices = source.getSelectedIndices();
 					if (selectedIndices.length > 0) {
 						Solution chosenSolution = solutions[selectedIndices[0]];
+						solutionRenderer.setSolution(chosenSolution);
+						solutionRenderer.repaint();
 						System.out.println("\n".repeat(50) + "Solution No. " + (selectedIndices[0]+1) + "\n" + chosenSolution.toString());
 					}
 				}
@@ -93,7 +97,7 @@ public class Main {
 		});
     	
     	explorer.add(scrollPane);
-    	
+    	explorer.add(solutionRenderer);
     	explorer.pack();
     	explorer.setLocationRelativeTo(null);
     	explorer.setVisible(true);

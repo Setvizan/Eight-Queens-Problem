@@ -61,9 +61,7 @@ public class Main {
     	SolutionRenderer solutionRenderer = new SolutionRenderer();
     	
     	JTable table = new JTable(new DefaultTableModel(new Object[] {"Solution"}, 0) {
-    		/**
-			 * 
-			 */
+
 			private static final long serialVersionUID = 290658070096283549L;
 
 			@Override
@@ -90,7 +88,6 @@ public class Main {
 						Solution chosenSolution = solutions[selectedIndices[0]];
 						solutionRenderer.setSolution(chosenSolution);
 						solutionRenderer.repaint();
-						System.out.println("\n".repeat(50) + "Solution No. " + (selectedIndices[0]+1) + "\n" + chosenSolution.toString());
 					}
 				}
 			}

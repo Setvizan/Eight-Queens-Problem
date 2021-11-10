@@ -3,6 +3,8 @@ package com.github.setvizan.eightqueens;
 /**
  Author: Nino Arisona and Oliver Janka
 
+ !NOTE THIS IS ONLY FOR 8 QUEENS, FOR COMMENTED CODE LOOK INTO NQueens.java!
+
  Info:
  fast brute-force-ish method to calculate EightQueens
  Though this solution isn't THAT fast and printing an output of the board also takes quite a bit

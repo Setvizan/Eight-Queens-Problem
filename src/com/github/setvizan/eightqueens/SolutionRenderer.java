@@ -6,9 +6,7 @@ import java.awt.Graphics;
 public class SolutionRenderer extends Component {
 
 	private Solution solution;
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 8263475183196560552L;
 	
 	public void setSolution(Solution solution) {

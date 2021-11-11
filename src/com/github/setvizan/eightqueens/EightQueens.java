@@ -1,7 +1,7 @@
 package com.github.setvizan.eightqueens;
 
 /**
- Author: Nino Arisona and Oliver Janka
+ @author Nino Arisona, Oliver Janka
 
  !NOTE THIS IS ONLY FOR 8 QUEENS, FOR COMMENTED CODE LOOK INTO NQueens.java!
 

@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Author: Nino Arisona and Oliver Janka
- * <p>
- * Info:
+ * @author Nino Arisona and Oliver Janka
  * fast brute-force-ish method to calculate NQueens
  * Though this solution isn't THAT fast and printing an output of the board also takes quite a bit
  * according to chess rank and file to coordinate system would be x and y
- * <p>
+ * 
+ * To use this class just call the method {@link #solve(int)}
+ * 
  * Info-Naming convention:
  * methods northeast and northwest are named after cardinal directions, namely the diagonal ones, of which the queen can move.
- * <p>
+ * 
  * Help:
  * Stack Overflow for diagonal constraints
  * Google developer page for basic overview and explanation of the problem
@@ -27,7 +27,7 @@ public class NQueens {
     private int[] queens;
     private final List<Solution> solutions;
 
-    NQueens(int N) {
+    private NQueens(int N) {
         this.counter = 0;
         this.queens = new int[N];
         this.N = N;
@@ -84,7 +84,9 @@ public class NQueens {
         }
     }
 
-    // reads a solution into a 2 dimensional array for rendering
+    /**
+     * reads a solution into a 2 dimensional array for rendering
+     */
     private void addSolution() {
         boolean[][] queens = new boolean[N][N];
         for (int i = 0; i < queens.length; i++) {
@@ -95,7 +97,10 @@ public class NQueens {
         solutions.add(new Solution(queens));
     }
 
-    // This is used to output solution into the console
+    /**
+     * This is used to output solution into the console
+     * @deprecated
+     */
     private void printSolution() {
         for (int r = 0; r < N; r++) {
             for (int f = 0; f < N; f++) {
@@ -105,10 +110,14 @@ public class NQueens {
         }
     }
 
-    public List<Solution> getSolutions() {
+    private List<Solution> getSolutions() {
         return this.solutions;
     }
-
+    
+    /**
+     * Starts solving the problem
+     * This method may take a long time
+     */
     public static Solution[] solve(int N) {
         var instance = new NQueens(N);
         instance.loop(0);

@@ -1,9 +1,16 @@
 package com.github.setvizan.eightqueens;
 
+/**
+ * This is just a wrapper class to store solutions in
+ */
 public class Solution {
 
 	private final boolean[][] queens;
 	
+	/**
+	 * 
+	 * @param queens [N][N] Array true if there's a queen, false otherwise
+	 */
 	public Solution(boolean[][] queens) {
 		this.queens = queens;
 	}
@@ -12,6 +19,14 @@ public class Solution {
 		return queens;
 	}
 	
+	/**
+	 * @return A string which visualizes a NxN chess board and marks all queen-positions
+	 * String looks like this:
+	 * [ ][Q][ ][ ]
+	 * [ ][ ][ ][Q]
+	 * [Q][ ][ ][ ]
+	 * [ ][ ][Q][ ]
+	 */
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();

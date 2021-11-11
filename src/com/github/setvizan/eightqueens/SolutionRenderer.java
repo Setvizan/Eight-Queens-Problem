@@ -3,6 +3,11 @@ package com.github.setvizan.eightqueens;
 import java.awt.Component;
 import java.awt.Graphics;
 
+/**
+ * This class is a component which can be added as child of a JFrame or other component.
+ * It visualizes a soution which can be changed by the method {@link #setSolution(Solution)}
+ *
+ */
 public class SolutionRenderer extends Component {
 
 	private Solution solution;
@@ -18,6 +23,10 @@ public class SolutionRenderer extends Component {
 	}
 	
 	@Override
+	/**
+	 * Paint method for parent component.
+	 * It should not be called manually you should call the {@link #repaint()} method instead
+	 */
 	public void paint(Graphics g) {
 		if (this.solution != null) {
 			int fieldHeight = this.getHeight() / this.solution.getQueens().length;

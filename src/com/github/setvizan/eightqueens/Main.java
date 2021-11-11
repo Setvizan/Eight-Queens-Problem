@@ -17,6 +17,10 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 public class Main {
+	/**
+	 * Starts the programm
+	 * Asks the user for N (size of board, amount of queens) by displaying a dialog box
+	 */
     public static void main(String[] args) {
     	JFrame nDialog = new JFrame();
     	nDialog.setLayout(null);
@@ -51,6 +55,11 @@ public class Main {
     	nDialog.setVisible(true);
     }
     
+    /**
+     * Opens a new window with a selectable list of all solutions.
+     * When the user selects one, a visualization is shown 
+     * @param solutions
+     */
     public static void showSolutions(Solution[] solutions) {
     	JFrame explorer = new JFrame();
     	explorer.setTitle("Solutions");

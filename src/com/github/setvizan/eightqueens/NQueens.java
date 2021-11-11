@@ -34,31 +34,69 @@ public class NQueens {
         this.solutions = new ArrayList<>();
     }
 
-    // checks for pieces on left-to-right diagonal using basics maths
+    /**
+     * checks for pieces on left-to-right diagonal using basics maths
+     * For reference, look at a subtraction table and look at the diagonal patterns
+     *
+     * @param rank; x coordinate
+     * @param file; y coordinate
+     * @return int
+     */
     private int northeast(final int rank, final int file) {
         return rank + file;
     }
-    // checks for pieces on right-to-left diagonal using basics maths
+
+    /**
+     * checks for pieces on right-to-left diagonal using basics maths
+     * For reference, look at a subtraction table and look at the diagonal patterns
+     *
+     * @param rank; x coordinate
+     * @param file; y coordinate
+     * @return int
+     */
     private int northwest(final int rank, final int file) {
         return rank - file;
     }
 
-    // checks if pieces are on diagonals using northwest and northeast methods
+    /**
+     * checks if pieces are on diagonals using northwest and northeast methods
+     *
+     * @param rank; x coordinate
+     * @param file; y coordinate
+     * @param r; x coordinate for already places queens
+     * @param f; y coordinate for already places queens
+     * @return boolean, true if another queen found using same diagonal
+     */
     private boolean onDiagonal(final int rank, final int file, final int r, final int f) {
         return northwest(rank, file) == northwest(r, f) || northeast(rank, file) == northeast(r, f);
     }
 
-    // places queen on rank -> this will be overwritten if no solution is found
+    /**
+     * places queen on rank
+     *
+     * @param rank; x coordinate
+     * @param file; y coordinate
+     */
     private void placeQueen(final int rank, final int file) {
         this.queens[rank] = file;
     }
-
-    // clears queen on rank after no solution is found; NOTE: this isn't really needed but makes debugging easier
+    /**
+     * clears queen on rank after no solution is found.
+     * NOTE: this isn't really needed but makes debugging easier
+     *
+     * @param rank; x coordinate
+     */
     private void clearQueen(final int rank) {
         this.queens[rank] = 0;
     }
 
-
+    /**
+     * checks if the following field isSafe or not
+     *
+     * @param rank; x coordinate
+     * @param file; y coordinate
+     * @return boolean, true if field is safe
+     */
     private boolean isSafe(final int rank, final int file) {
         for (int r = 0; r < rank; r++) {
             int f = queens[r];                                  //use file for constraint since rank constraint is done by default in loop recursion
@@ -69,6 +107,11 @@ public class NQueens {
         return true;
     }
 
+    /**
+     * recursive function used for starting the program
+     *
+     * @param rank; x coordinate
+     */
     private void loop(final int rank) {
         if (rank == N) {                            // If rank is equal to N a solution has been found!
             System.out.println("Solutions: " + ++this.counter);
@@ -116,7 +159,9 @@ public class NQueens {
     
     /**
      * Starts solving the problem
-     * This method may take a long time
+     * This method may take a long time, if value is over 15 -> overflow
+     *
+     * @param N; amount of queens in N*N field
      */
     public static Solution[] solve(int N) {
         var instance = new NQueens(N);

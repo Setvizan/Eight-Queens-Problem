@@ -28,7 +28,7 @@ public class SolutionRenderer extends Component {
 	 * It should not be called manually you should call the {@link #repaint()} method instead
 	 */
 	public void paint(Graphics g) {
-		if (this.solution != null) {
+		if (this.solution != null && this.solution.getQueens().length > 0) {
 			int fieldHeight = this.getHeight() / this.solution.getQueens().length;
 			int posY = 0;
 			for (boolean[] barr : this.solution.getQueens()) {
